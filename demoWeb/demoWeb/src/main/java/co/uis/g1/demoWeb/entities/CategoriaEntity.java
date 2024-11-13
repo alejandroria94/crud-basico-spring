@@ -8,23 +8,25 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "autores")
+@Table(name="categorias")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AutorEntity {
+public class CategoriaEntity {
 
     @Id
-    @Column(name = "codigo", nullable = false, unique = true, length = 100)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_categoria")
+    private Integer idCategoria;
 
     @Column(name = "nombre", length = 100)
     private String nombre;
 
-    @Column(name = "nacionalidad", length = 100)
-    private String nacionalidad;
+    @Column(name = "descripcion", columnDefinition = "TEXT")
+    private String descripcion;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
-    @JoinColumn(name = "codigo_autor")
+    @JoinColumn(name = "id_categoria")
     private List<LibroEntity> libros;
+
 }
