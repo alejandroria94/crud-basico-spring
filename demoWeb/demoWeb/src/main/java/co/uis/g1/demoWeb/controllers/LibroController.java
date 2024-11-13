@@ -8,6 +8,7 @@ package co.uis.g1.demoWeb.controllers;
 import co.uis.g1.demoWeb.entities.AutorEntity;
 import co.uis.g1.demoWeb.entities.LibroEntity;
 import co.uis.g1.demoWeb.services.LibroService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/libros")
+@AllArgsConstructor
 public class LibroController {
 
     @GetMapping("/test")
@@ -27,8 +29,8 @@ public class LibroController {
         return "Hola Mundo todo OK";
     }
     
-     @Autowired
-    private LibroService libroService;
+
+    private final LibroService libroService;
 
     @GetMapping("/listar")
     public List<LibroEntity> listarLibros() {

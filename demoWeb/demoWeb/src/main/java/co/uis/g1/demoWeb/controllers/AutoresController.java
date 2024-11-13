@@ -9,6 +9,8 @@ import co.uis.g1.demoWeb.entities.AutorEntity;
 import co.uis.g1.demoWeb.services.AutorService;
 import java.util.List;
 import java.util.Optional;
+
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/autores")
+@AllArgsConstructor
 public class AutoresController {
 
     @GetMapping("/test")
@@ -32,8 +35,8 @@ public class AutoresController {
         return "Hola Mundo todo OK";
     }
     
-     @Autowired
-    private AutorService autoresService;
+
+    private final AutorService autoresService;
 
     @GetMapping("/listar")
     public List<AutorEntity> getAllAutores() {

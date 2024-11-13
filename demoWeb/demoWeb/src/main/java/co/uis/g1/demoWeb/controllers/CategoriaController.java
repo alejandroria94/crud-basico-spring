@@ -9,6 +9,7 @@ import co.uis.g1.demoWeb.entities.CategoriaEntity;
 import co.uis.g1.demoWeb.entities.LibroEntity;
 import co.uis.g1.demoWeb.services.CategoriaService;
 import co.uis.g1.demoWeb.services.LibroService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/categorias")
+@AllArgsConstructor
 public class CategoriaController {
 
     @GetMapping("/test")
@@ -29,8 +31,8 @@ public class CategoriaController {
         return "Hola Mundo todo OK";
     }
     
-     @Autowired
-    private CategoriaService categoriaService;
+
+    private final CategoriaService categoriaService;
 
     @GetMapping("/listar")
     public List<CategoriaEntity> listarCategorias() {
